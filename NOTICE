@@ -1,0 +1,18 @@
+rxkb: MCP server with the drxinfra.ru knowledge base for Directum RX
+Copyright 2026 drxinfra (https://drxinfra.ru)
+
+This product includes software developed by drxinfra
+(https://github.com/drxinfra/rxkb).
+
+The names "rxkb" and "drxinfra" identify the original project. The Apache
+License 2.0 does not grant permission to use them (section 6). A fork or
+derivative work must be distributed under a different name and must not
+suggest that it is made or endorsed by drxinfra.
+
+The articles, the error reference and the calculator models of drxinfra.ru
+that the server answers with are not part of this repository and are not
+licensed under the Apache License; the files under testdata/ are made-up
+test data.
+
+Directum RX is a product of Directum. This project is not affiliated with
+the vendor; trademarks belong to their owners.

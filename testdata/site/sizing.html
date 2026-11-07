@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="ru">
+<head><meta charset="utf-8"><title>Тестовый сайзинг</title></head>
+<body>
+<button type="button" data-preset="users=100">Малая, 100 чел.</button>
+<form id="calc-form">
+  <fieldset class="fs">
+    <label class="fld"><span class="l">Версия</span><span class="in"><select name="ver"></select></span></label>
+    <label class="fld"><span class="l">Пользователей всего</span><span class="in"><input type="number" name="users" min="5" step="5" value="300"><em>чел.</em></span></label>
+    <div class="fld"><span class="l">Горизонт планирования</span>
+      <div class="seg">
+        <label><input type="radio" name="years" value="3"><span>3 года</span></label>
+        <label><input type="radio" name="years" value="5" checked><span>5 лет</span></label>
+      </div>
+    </div>
+    <div class="fld"><span class="l">Операционная система</span>
+      <div class="seg">
+        <label><input type="radio" name="os" value="linux" checked><span>Linux</span></label>
+        <label><input type="radio" name="os" value="windows"><span>Windows Server</span></label>
+      </div>
+    </div>
+    <label class="tog"><input type="checkbox" name="ha"><span class="sw"></span><span class="t">Отказоустойчивость<small>каждый слой</small></span></label>
+    <label class="tog"><input type="checkbox" name="test" checked><span class="sw"></span><span class="t">Тестовый<small>пятая часть</small></span></label>
+  </fieldset>
+</form>
+</body>
+</html>

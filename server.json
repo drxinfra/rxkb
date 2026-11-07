@@ -1,0 +1,25 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.drxinfra/rxkb",
+  "title": "drxinfra knowledge base for Directum RX",
+  "description": "Directum RX ops: find errors by log line, articles, sizing calculators, versions, checklists",
+  "websiteUrl": "https://drxinfra.ru/mcp.html",
+  "repository": {
+    "url": "https://github.com/drxinfra/rxkb",
+    "source": "github"
+  },
+  "version": "0.1.0",
+  "icons": [
+    {
+      "src": "https://drxinfra.ru/icon-512.png",
+      "mimeType": "image/png",
+      "sizes": ["512x512"]
+    }
+  ],
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://drxinfra.ru/mcp"
+    }
+  ]
+}

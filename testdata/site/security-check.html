@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="ru">
+<head><meta charset="utf-8"><title>Тестовая самооценка</title></head>
+<body>
+<form id="sec-form">
+  <fieldset class="fs qgroup" data-sev="crit">
+    <h3><span class="pill sev-crit">Критично</span> 2 вопроса</h3>
+    <div class="q" id="q1" data-w="10" data-fix="Настройте бэкап." data-href="postgresql-backup.html" data-ref="Команды бэкапа">
+      <p class="qt">Бэкап делается автоматически</p>
+      <p class="qh">Иначе его забудут сделать.</p>
+    </div>
+    <div class="q" id="q2" data-w="10" data-fix="Проверьте восстановление.">
+      <p class="qt">Восстановление проверяли</p>
+      <p class="qh">Бэкап без проверки это надежда.</p>
+    </div>
+  </fieldset>
+  <fieldset class="fs qgroup" data-sev="low">
+    <h3><span class="pill sev-low">Низкий</span> 1 вопрос</h3>
+    <div class="q" id="q3" data-w="1" data-fix="Включите синхронизацию времени." data-href="errors/kerberos-clock-skew.html" data-ref="Ошибка Clock skew">
+      <p class="qt">Время синхронизируется</p>
+      <p class="qh">Расхождение ломает Kerberos.</p>
+    </div>
+  </fieldset>
+</form>
+</body>
+</html>

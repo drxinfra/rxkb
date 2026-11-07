@@ -1,0 +1,63 @@
+# /etc/systemd/system/rxkb.service — MCP-сервер rxkb за nginx.
+# База kb.json кладётся в /var/lib/rxkb при выкладке сайта, сервис замечает новый файл сам
+# (раз в 30 секунд) или по systemctl reload rxkb.
+[Unit]
+Description=rxkb: MCP server with the drxinfra.ru knowledge base
+Documentation=https://github.com/drxinfra/rxkb
+After=network.target
+
+[Service]
+ExecStart=/usr/local/bin/rxkb -listen 127.0.0.1:8790 -kb /var/lib/rxkb/kb.json
+ExecReload=/bin/kill -HUP $MAINPID
+Restart=always
+RestartSec=5
+Environment=GOMEMLIMIT=160MiB
+
+# Пользователь без входа и без своих файлов, его создаёт systemd на время работы.
+DynamicUser=yes
+UMask=0077
+NoNewPrivileges=yes
+CapabilityBoundingSet=
+AmbientCapabilities=
+
+# Файловая система только для чтения, своего домашнего каталога и /tmp нет.
+ProtectSystem=strict
+ProtectHome=yes
+PrivateTmp=yes
+PrivateDevices=yes
+PrivateUsers=yes
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectKernelLogs=yes
+ProtectControlGroups=yes
+ProtectClock=yes
+ProtectHostname=yes
+ProtectProc=invisible
+ProcSubset=pid
+RemoveIPC=yes
+
+# Системные вызовы и пространства имён.
+LockPersonality=yes
+MemoryDenyWriteExecute=yes
+RestrictNamespaces=yes
+RestrictRealtime=yes
+RestrictSUIDSGID=yes
+RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
+SystemCallArchitectures=native
+SystemCallFilter=@system-service
+SystemCallFilter=~@privileged
+SystemCallErrorNumber=EPERM
+
+# Сеть: принимать только от nginx на этом же сервере, наружу не ходить.
+IPAddressDeny=any
+IPAddressAllow=localhost
+
+# Ресурсы: сайт на том же сервере важнее.
+MemoryHigh=192M
+MemoryMax=256M
+CPUQuota=100%
+TasksMax=64
+LimitNOFILE=4096
+
+[Install]
+WantedBy=multi-user.target

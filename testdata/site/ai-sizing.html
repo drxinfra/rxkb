@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="ru">
+<head><meta charset="utf-8"><title>Тестовое железо под ИИ</title></head>
+<body>
+<form id="ais-form">
+  <label class="fld"><span class="l">Модель</span><span class="in"><select name="model"></select></span></label>
+  <label class="fld"><span class="l">Сервер</span><span class="in"><select name="hw"></select></span></label>
+  <div class="seg">
+    <label><input type="radio" name="toolset" value="all" checked><span>Все 27</span></label>
+    <label><input type="radio" name="toolset" value="pilot"><span>16 для пилота</span></label>
+  </div>
+  <div class="seg">
+    <label><input type="radio" name="kv" value="f16" checked><span>f16</span></label>
+    <label><input type="radio" name="kv" value="q8_0"><span>q8_0</span></label>
+  </div>
+  <label class="fld"><span class="l">Сотрудников</span><span class="in"><input type="number" name="users" min="1" step="10" value="300"></span></label>
+  <label class="fld"><span class="l">Доля</span><span class="in"><input type="number" name="share" min="1" max="100" step="1" value="20"></span></label>
+  <label class="fld"><span class="l">Вопросов в час</span><span class="in"><input type="number" name="qph" min="1" step="1" value="2"></span></label>
+  <label class="fld"><span class="l">Ждать</span><span class="in"><input type="number" name="target" min="10" step="10" value="60"></span></label>
+</form>
+</body>
+</html>

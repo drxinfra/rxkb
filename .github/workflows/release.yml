@@ -1,0 +1,37 @@
+name: release
+on:
+  push:
+    tags: ['v*']
+permissions:
+  contents: write
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    # id-token и attestations нужны для подписи происхождения архивов (Sigstore через OIDC GitHub).
+    permissions:
+      contents: write
+      id-token: write
+      attestations: write
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-go@v6
+        with:
+          go-version-file: go.mod
+      - run: hack/leakcheck.sh
+        env:
+          LEAKCHECK_PATTERN: ${{ secrets.LEAKCHECK_PATTERN }}
+      - run: go test ./...
+      # Гейт выпуска: с известной исправимой уязвимостью HIGH/CRITICAL релиз не публикуется.
+      - run: hack/install-trivy.sh && echo "$PWD/bin" >> "$GITHUB_PATH"
+      - run: hack/vulncheck.sh
+      - run: hack/build.sh "${GITHUB_REF_NAME}"
+      # Проверка у пользователя: gh attestation verify <архив> --repo drxinfra/rxkb
+      - uses: actions/attest-build-provenance@v2
+        with:
+          subject-path: dist/*.tar.gz
+      - uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            dist/*.tar.gz
+            dist/SHA256SUMS
+          generate_release_notes: true

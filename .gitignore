@@ -1,0 +1,11 @@
+/dist/
+/bin/
+/rxkb
+/kb.json
+*.tmp
+*.test
+*.out
+.env
+.env.*
+.DS_Store
+.leakcheck
